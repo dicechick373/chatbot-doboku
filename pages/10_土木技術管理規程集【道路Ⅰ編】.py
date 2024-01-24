@@ -15,6 +15,14 @@ os.environ["https_proxy"] = st.secrets["PROXY"]
 # header
 st.header("LangChain🦜🔗 himeji-model")
 
+# sidebar
+with st.sidebar:
+    openai_api_key = st.sidebar.text_input('OpenAI API Key')
+    
+    st.subheader('Link')
+    "[Source Code](https://github.com/streamlit/llm-examples/blob/main/Chatbot.py)"
+    "[OpenAI API](https://platform.openai.com)"
+    
 # ベクトルDBの指定
 VECTORSTORE_DIR = "vectorstore/faiss/kiteisyuu/douro1"
 
