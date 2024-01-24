@@ -15,7 +15,7 @@ with st.sidebar:
     openai_api_key = st.sidebar.text_input('OpenAI API Key')
     
     st.subheader('Link')
-    "[Source Code](https://github.com/streamlit/llm-examples/blob/main/Chatbot.py)"
+    "[Source Code](https://github.com/dicechick373/chatbot-doboku)"
     "[OpenAI API](https://platform.openai.com)"
 
 # ベクトルDBの指定
