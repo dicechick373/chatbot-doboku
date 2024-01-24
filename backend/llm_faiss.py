@@ -7,8 +7,8 @@ from langchain.chat_models import ChatOpenAI
 
 # proxy設定
 # HYOGOドメイン内で実行しない場合はコメントアウト
-os.environ["http_proxy"] = st.secrets["PROXY"]
-os.environ["https_proxy"] = st.secrets["PROXY"]
+# os.environ["http_proxy"] = st.secrets["PROXY"]
+# os.environ["https_proxy"] = st.secrets["PROXY"]
 
 def run_llm(openai_api_key,query,vectordir):
 

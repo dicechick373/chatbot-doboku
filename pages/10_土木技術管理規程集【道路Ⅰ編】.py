@@ -9,8 +9,8 @@ openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 # proxy設定 
 # デプロイ時はコメントアウト
-os.environ["http_proxy"] = st.secrets["PROXY"]
-os.environ["https_proxy"] = st.secrets["PROXY"]
+# os.environ["http_proxy"] = st.secrets["PROXY"]
+# os.environ["https_proxy"] = st.secrets["PROXY"]
 
 # header
 st.header("LangChain🦜🔗 himeji-model")
@@ -22,7 +22,7 @@ with st.sidebar:
     st.subheader('Link')
     "[Source Code](https://github.com/streamlit/llm-examples/blob/main/Chatbot.py)"
     "[OpenAI API](https://platform.openai.com)"
-    
+
 # ベクトルDBの指定
 VECTORSTORE_DIR = "vectorstore/faiss/kiteisyuu/douro1"
 

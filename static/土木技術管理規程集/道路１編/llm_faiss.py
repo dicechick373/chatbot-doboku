@@ -10,8 +10,8 @@ OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 
 # proxy設定
 # HYOGOドメイン内で実行しない場合はコメントアウト
-os.environ["http_proxy"] = st.secrets["PROXY"]
-os.environ["https_proxy"] = st.secrets["PROXY"]
+# os.environ["http_proxy"] = st.secrets["PROXY"]
+# os.environ["https_proxy"] = st.secrets["PROXY"]
 
 # ベクトルDBの指定
 VECTORSTORE_DIR = "vectorstore/faiss/kiteisyuu/douro1"
