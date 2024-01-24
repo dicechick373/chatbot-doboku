@@ -36,7 +36,9 @@ if prompt := st.chat_input():
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
     response = run_llm(
-            query=prompt,vectordir = VECTORSTORE_DIR
+            openai_api_key=openai_api_key,
+            query=prompt,
+            vectordir = VECTORSTORE_DIR
         )
     msg = response['answer']
     st.session_state.messages.append({"role": "assistant", "content": msg})
