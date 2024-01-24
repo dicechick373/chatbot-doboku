@@ -8,7 +8,7 @@ from streamlit_chat import message
 # os.environ["https_proxy"] = st.secrets["PROXY"]
 
 # header
-st.header("LangChain🦜🔗 himeji-model")
+st.header("LangChain🦜🔗 doboku-model")
 
 # sidebar
 with st.sidebar:

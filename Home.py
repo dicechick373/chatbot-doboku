@@ -16,7 +16,7 @@ with st.sidebar:
     "[OpenAI API](https://platform.openai.com)"
 
 # header
-st.header("LangChain🦜🔗 himeji-model")
+st.header("LangChain🦜🔗 doboku-model")
 
 st.caption("サイドメニューから質問対象の図書を選んでください")
 
