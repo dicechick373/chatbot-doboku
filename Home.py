@@ -37,7 +37,7 @@ st.header("LangChain🦜🔗 doboku-model")
 
 # sidebar
 with st.sidebar:
-    st.session_state.openai_api_key = st.sidebar.text_input('OpenAI API Key')
+    st.session_state.openai_api_key = st.sidebar.text_input('OpenAI APIキーを入力してください')
 
     stock = st.radio(
         label='対象図書を選択してください',
