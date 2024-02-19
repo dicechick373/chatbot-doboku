@@ -12,23 +12,23 @@ def vectorstore_dir(stock):
         return "vectorstore/faiss/kyoutsuu_shiyousyo"
     elif stock == '土木請負工事必携':
         return "vectorstore/faiss/hikkei"
-    elif stock == '土木技術管理規程集【道路Ⅰ編】':
+    elif stock == '規程集【道路Ⅰ編】':
         return "vectorstore/faiss/kiteisyuu/douro1"
-    elif stock == '土木技術管理規程集【道路Ⅱ編】':
+    elif stock == '規程集【道路Ⅱ編】':
         return "vectorstore/faiss/kiteisyuu/douro2"
-    elif stock == '土木技術管理規程集【河川編】':
+    elif stock == '規程集【河川編】':
         return "vectorstore/faiss/kiteisyuu/kasen"
-    elif stock == '土木技術管理規程集【砂防編_砂防】':
+    elif stock == '規程集【砂防編_砂防】':
         return "vectorstore/faiss/kiteisyuu/sabou"
-    elif stock == '土木技術管理規程集【砂防編_急傾斜】':
+    elif stock == '規程集【砂防編_急傾斜】':
         return "vectorstore/faiss/kiteisyuu/kyuukeisya"
-    elif stock == '土木技術管理規程集【砂防編_地すべり】 ':
+    elif stock == '規程集【砂防編_地すべり】 ':
         return "vectorstore/faiss/kiteisyuu/jisuberi"
-    elif stock == '近畿地整設計便覧【土木工事共通編】':
+    elif stock == '地整便覧【土木工事共通編】':
         return "vectorstore/faiss/chiseibinran/kyoutsuu"
-    elif stock == '近畿地整設計便覧【道路編】 ':
+    elif stock == '地整便覧【道路編】 ':
         return "vectorstore/faiss/chiseibinran/douro"
-    elif stock == '近畿地整設計便覧【河川編】 ':
+    elif stock == '地整便覧【河川編】 ':
         return "vectorstore/faiss/chiseibinran/kasen"
     
 # sidebar
@@ -37,10 +37,10 @@ with st.sidebar:
 
     stock = st.radio(
         label='対象図書を選択してください',
-        options=('土木工事共通仕様書', '土木請負工事必携', '土木技術管理規程集【道路Ⅰ編】'
-                 '土木技術管理規程集【道路Ⅱ編】', '土木技術管理規程集【河川編】','土木技術管理規程集【砂防編_砂防】',
-                 '土木技術管理規程集【砂防編_急傾斜】', '土木技術管理規程集【砂防編_地すべり】',
-                 '近畿地整設計便覧【土木工事共通編】', '近畿地整設計便覧【道路編】', '近畿地整設計便覧【河川編】'),
+        options=('土木工事共通仕様書', '土木請負工事必携', '規程集【道路Ⅰ編】'
+                 '規程集【道路Ⅱ編】', '規程集【河川編】','規程集【砂防編_砂防】',
+                 '規程集【砂防編_急傾斜】', '規程集【砂防編_地すべり】',
+                 '地整便覧【土木工事共通編】', '地整便覧【道路編】', '地整便覧【河川編】'),
         index=0,
         # horizontal=True,
         )
