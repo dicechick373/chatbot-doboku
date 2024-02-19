@@ -10,15 +10,14 @@ OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 
 # proxy設定
 # HYOGOドメイン内で実行しない場合はコメントアウト
-# os.environ["http_proxy"] = st.secrets["PROXY"]
-# os.environ["https_proxy"] = st.secrets["PROXY"]
+os.environ["http_proxy"] = st.secrets["PROXY"]
+os.environ["https_proxy"] = st.secrets["PROXY"]
 
 # ベクトルDBの指定
 VECTORSTORE_DIR = "vectorstore/faiss/kiteisyuu/douro1"
 
-
-# ベクトルDBの検索結果を踏まえて回答する関数
-def run_llm(query,):
+def run_llm(query):
+    """ベクトルDBの検索結果を踏まえて回答する関数"""
 
     # set embeddings
     embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
@@ -42,10 +41,9 @@ def run_llm(query,):
 
     return chain({"question": query, "chat_history": []})
 
-# 回答に出典を付与する関数
-
 
 def format_answer(response):
+    """回答に出典を付与する関数"""
     sources = []
     for r in response["source_documents"]:
         source = r.metadata["source"]
@@ -57,27 +55,27 @@ def format_answer(response):
 
 # 出力テスト
 def test(query):
-    results = run_llm(query, [])
+    results = run_llm(query)
     print("質問：", results["question"])
     print("回答：", format_answer(results))
 
 
 if __name__ == "__main__":
 
-    # query = "暫定時の車線運用についてどのようにすべきか？"
-    # test(query)
+    query = "暫定時の車線運用についてどのようにすべきか？"
+    test(query)
 
-    # query = "道路の横断勾配は標準で何％？"
-    # test(query)
+    query = "道路の横断勾配は標準で何％？"
+    test(query)
 
-    # query = "路面などの流出係数はどこに規定されている？"
-    # test(query)
+    query = "路面などの流出係数はどこに規定されている？"
+    test(query)
 
-    # query = "排水施設の最小勾配と最大勾配は？"
-    # test(query)
+    query = "排水施設の最小勾配と最大勾配は？"
+    test(query)
 
-    # query = "下水汚泥溶融スラグの使用について教えて"
-    # test(query)
+    query = "下水汚泥溶融スラグの使用について教えて"
+    test(query)
 
     query = "アスファルト舗装の最小厚さは？"
     test(query)

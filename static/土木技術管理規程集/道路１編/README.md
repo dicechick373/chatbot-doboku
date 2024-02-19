@@ -203,16 +203,34 @@ vectorstore/
   ├─ faiss
   　  ├─ kiteisyuu
  　　　　　├─  douro1
- 　　　　　　　　├─ 
+ 　　　　　　　　├─  index.faiss
+            　　└─  index.pkl
 ```
 
-## ベクトルDBの最近傍探索結果を踏まえた回答の作成
+## ベクトルDBを踏まえたchat-bot
+
+[llm_faiss.py](llm_faiss.py)でテストする。
 
 保存したベクトルDBを読み込んで、質問に回答するchatモデルを作成する。
 
+### 設定
+
+対象となるベクトルDBを指定する。
+
+```py
+# ベクトルDBの指定
+VECTORSTORE_DIR = "vectorstore/faiss/kiteisyuu/douro1"
+
+```
+
+### ベクトル検索結果の付与
+
+[LangChainのRetrievers](https://python.langchain.com/docs/modules/data_connection/retrievers/)を利用して、FAISSの検索結果をコンテキストとして渡す。
+
+
 ```python
-# ベクトルDBの検索結果を踏まえて回答する関数
 def run_llm(query, chat_history = []):
+    """ベクトルDBの検索結果を踏まえて回答する関数"""
 
     # set embeddings
     embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY )
@@ -241,8 +259,8 @@ def run_llm(query, chat_history = []):
 せっかくなので、回答の根拠となる出典も含めるよう、加工しておく。
 
 ```python
-# 回答に出典を付与する関数
 def format_answer(response):
+    """回答に出典を付与する関数"""
     sources = []
     for r in response["source_documents"]:
         source = r.metadata["source"]
@@ -252,7 +270,7 @@ def format_answer(response):
     return  f"{response['answer']} \n\n 出典「{sources}」"
 ```
 
-出力結果は次のとおり。
+### 出力テスト
 
 サンプルコードは[llm_faiss.py]に置いておく。
 
