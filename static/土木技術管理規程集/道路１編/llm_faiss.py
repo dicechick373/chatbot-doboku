@@ -16,14 +16,23 @@ os.environ["https_proxy"] = st.secrets["PROXY"]
 # ベクトルDBの指定
 VECTORSTORE_DIR = "vectorstore/faiss/kiteisyuu/douro1"
 
-def run_llm(query):
-    """ベクトルDBの検索結果を踏まえて回答する関数"""
+def load_faiss():
+    """ベクトル検索結果を取得する関数"""
 
     # set embeddings
     embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
 
     # load vectorstore
     vectorstore = FAISS.load_local(VECTORSTORE_DIR, embeddings)
+
+    return vectorstore
+
+
+def run_llm(query):
+    """ベクトルDBの検索結果を踏まえて回答する関数"""
+
+    # ベクトル検索結果を取得
+    vectorstore = load_faiss()
 
     # set chat-model
     chat = ChatOpenAI(
@@ -66,9 +75,6 @@ if __name__ == "__main__":
     test(query)
 
     query = "道路の横断勾配は標準で何％？"
-    test(query)
-
-    query = "路面などの流出係数はどこに規定されている？"
     test(query)
 
     query = "排水施設の最小勾配と最大勾配は？"
