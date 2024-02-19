@@ -43,7 +43,7 @@ def format_answer(response):
         page = r.metadata["page"]
         sources.append(source + 'P:'+ page)
     
-    return  f"{response['answer']} \n\n 出典「{sources}」"
+    return  f"{response['answer']} \n\n 出典:{sources}"
 
 
 
