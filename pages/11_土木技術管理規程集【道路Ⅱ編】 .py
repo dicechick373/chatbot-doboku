@@ -12,7 +12,7 @@ st.header("LangChain🦜🔗 doboku-model")
 
 # sidebar
 with st.sidebar:
-    openai_api_key = st.sidebar.text_input('OpenAI API Key')
+    st.session_state.openai_api_key = st.sidebar.text_input('OpenAI API Key')
     
     st.subheader('Link')
     "[Source Code](https://github.com/dicechick373/chatbot-doboku)"
