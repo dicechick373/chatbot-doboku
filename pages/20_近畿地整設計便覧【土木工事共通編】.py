@@ -4,9 +4,6 @@ from backend.llm_faiss import run_llm
 import streamlit as st
 from streamlit_chat import message
 
-# OpenAI　APIキー設定
-openai.api_key = st.secrets["OPENAI_API_KEY"]
-
 # proxy設定
 # デプロイ時はコメントアウト
 # os.environ["http_proxy"] = st.secrets["PROXY"]
