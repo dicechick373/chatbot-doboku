@@ -49,5 +49,30 @@ with st.sidebar:
 # header
 st.header("LangChain🦜🔗 doboku-model")
 
-st.caption("サイドメニューから質問対象の図書を選んでください")
+VECTORSTORE_DIR = vectorstore_dir(stock)
 
+if "messages" not in st.session_state:
+    st.session_state["messages"] = [
+        {"role": "assistant", "content": "質問を入力してください"}]
+
+if "chat_history" not in st.session_state:
+    st.session_state["chat_history"] = []
+
+for msg in st.session_state.messages:
+    st.chat_message(msg["role"]).write(msg["content"])
+
+if prompt := st.chat_input():
+    if not st.session_state["openai_api_key"]:
+        st.info("OpenAI API key を入力してください")
+        st.stop()
+
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    st.chat_message("user").write(prompt)
+    response = run_llm(
+            openai_api_key=st.session_state["openai_api_key"],
+            query=prompt,
+            vectordir = VECTORSTORE_DIR
+        )
+    msg = response['answer']
+    st.session_state.messages.append({"role": "assistant", "content": msg})
+    st.chat_message("assistant").write(msg)
