@@ -30,10 +30,14 @@ def vectorstore_dir(stock):
         return "vectorstore/faiss/chiseibinran/douro"
     elif stock == '地整便覧【河川編】 ':
         return "vectorstore/faiss/chiseibinran/kasen"
-    
+
+
+# header
+st.header("LangChain🦜🔗 doboku-model")
+
 # sidebar
 with st.sidebar:
-    openai_api_key = st.sidebar.text_input('OpenAI API Key')
+    st.session_state.openai_api_key = st.sidebar.text_input('OpenAI API Key')
 
     stock = st.radio(
         label='対象図書を選択してください',
@@ -46,11 +50,8 @@ with st.sidebar:
         )
 
     st.subheader('Link')
-    "[Source Code](https://github.com/dicechick373/chatbot-doboku)"
     "[OpenAI API](https://platform.openai.com)"
 
-# header
-st.header("LangChain🦜🔗 doboku-model")
 
 VECTORSTORE_DIR = vectorstore_dir(stock)
 
