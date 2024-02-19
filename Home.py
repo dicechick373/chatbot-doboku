@@ -11,6 +11,13 @@ from streamlit_chat import message
 with st.sidebar:
     openai_api_key = st.sidebar.text_input('OpenAI API Key')
 
+    stock = st.radio(
+        label='対象図書を選択してください',
+        options=('スノーピーク', '楽天', 'トヨタ'),
+        index=0,
+        # horizontal=True,
+        )
+
     st.subheader('Link')
     "[Source Code](https://github.com/dicechick373/chatbot-doboku)"
     "[OpenAI API](https://platform.openai.com)"
